@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portfolio-site-config
+  labels:
+    app: portfolio-site
+data:
+  # Environment-specific configuration
+  # Add any runtime configuration here if needed
+
+  # Example: Custom error pages
+  maintenance.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Maintenance</title>
+      <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #0969DA; }
+      </style>
+    </head>
+    <body>
+      <h1>Site Under Maintenance</h1>
+      <p>We'll be back shortly. Thank you for your patience.</p>
+    </body>
+    </html>
