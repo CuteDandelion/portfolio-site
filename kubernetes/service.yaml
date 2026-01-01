@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-site
+  labels:
+    app: portfolio-site
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
+    prometheus.io/path: "/metrics"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: portfolio-site
+  sessionAffinity: None
