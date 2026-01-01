@@ -4,13 +4,8 @@ on:
   push:
     branches:
       - main
-      - master
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - main
-      - master
 
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-site
@@ -30,72 +25,31 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to DockerHub
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels)
+      - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.DOCKER_IMAGE }}
           tags: |
-            # Tag as 'latest' for pushes to main/master
             type=raw,value=latest,enable={{is_default_branch}}
-            # Tag with git SHA
-            type=sha,prefix={{branch}}-
-            # Tag with version for tags (e.g., v1.0.0 -> 1.0.0)
+            type=sha,prefix=sha-
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            # Tag with branch name
             type=ref,event=branch
-            # Tag with PR number for pull requests
-            type=ref,event=pr
 
       - name: Build and push Docker image
-        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Image digest
-        if: github.event_name != 'pull_request'
-        run: echo "Image pushed with digest: ${{ steps.build.outputs.digest }}"
-
-      - name: Update deployment manifest
-        if: contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
-        run: |
-          # Get short SHA (first 7 characters)
-          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-
-          # Update the image tag in deployment.yaml
-          sed -i "s|image: .*/portfolio-site:.*|image: ${{ env.DOCKER_IMAGE }}:${{ github.ref_name }}-sha-${SHORT_SHA}|" kubernetes/deployment.yaml
-
-          echo "Updated deployment.yaml with image: ${{ env.DOCKER_IMAGE }}:${{ github.ref_name }}-sha-${SHORT_SHA}"
-
-      - name: Commit updated deployment manifest
-        if: contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
-        run: |
-          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-
-          git config --local user.name 'github-actions[bot]'
-          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-
-          git add kubernetes/deployment.yaml
-
-          if git diff --staged --quiet; then
-            echo "No changes to deployment.yaml"
-          else
-            git commit -m "chore: update deployment image to sha-${SHORT_SHA}"
-            git push
-          fi
