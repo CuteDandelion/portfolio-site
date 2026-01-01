@@ -7,25 +7,21 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Install dependencies only when needed
+# Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies
-RUN npm ci --only=production && \
+# Install ALL dependencies (including devDependencies needed for build)
+RUN npm ci && \
     npm cache clean --force
 
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application (creates /app/out directory)
 RUN npm run build
 
 # Stage 2: Production with Nginx
 FROM nginx:alpine AS production
-
-# Security: Run as non-root user
-RUN addgroup -g 101 -S nginx && \
-    adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -34,12 +30,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/out /usr/share/nginx/html
 
 # Create necessary directories and set permissions
+# Note: nginx user/group already exist in nginx:alpine image
 RUN mkdir -p /var/cache/nginx /var/log/nginx /var/run && \
     chown -R nginx:nginx /var/cache/nginx /var/log/nginx /var/run /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
-
-# Security: Set read-only root filesystem (most directories)
-RUN chmod -R 755 /var/cache/nginx /var/log/nginx /var/run
+    chmod -R 755 /usr/share/nginx/html /var/cache/nginx /var/log/nginx /var/run
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
