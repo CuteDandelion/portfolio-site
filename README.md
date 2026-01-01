@@ -1,6 +1,10 @@
 # Portfolio Site
 
-A modern, secure, and scalable portfolio website built with Next.js 14, TypeScript, and deployed on Kubernetes. Features a stunning starfield header, animated sections, and comprehensive DevOps best practices.
+[![Docker Build](https://github.com/YOUR_USERNAME/portfolio-site/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/YOUR_USERNAME/portfolio-site/actions/workflows/docker-build-push.yml)
+[![Docker Hub](https://img.shields.io/docker/pulls/YOUR_DOCKERHUB_USERNAME/portfolio-site.svg)](https://hub.docker.com/r/YOUR_DOCKERHUB_USERNAME/portfolio-site)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A modern, secure, and scalable portfolio website built with Next.js 14, TypeScript, and deployed on Kubernetes. Features a stunning starfield header, animated sections, comprehensive DevOps best practices, and automated CI/CD with GitHub Actions.
 
 ## Features
 
@@ -16,6 +20,7 @@ A modern, secure, and scalable portfolio website built with Next.js 14, TypeScri
 - **Security Hardened** - Comprehensive security headers and best practices
 - **Kubernetes Ready** - Production-ready manifests with HPA and monitoring
 - **Prometheus Metrics** - Built-in analytics and monitoring support
+- **CI/CD Pipeline** - Automated Docker builds and DockerHub deployment with GitHub Actions
 
 ## Tech Stack
 
@@ -183,6 +188,77 @@ Visit [http://localhost:8080](http://localhost:8080)
 docker push your-registry/portfolio-site:latest
 ```
 
+## CI/CD with GitHub Actions
+
+### Automated Docker Build and Push to DockerHub
+
+The repository includes a GitHub Actions workflow that automatically builds and pushes Docker images to DockerHub.
+
+#### Setup DockerHub Integration
+
+1. **Create a DockerHub Access Token**
+   - Go to [DockerHub Account Settings](https://hub.docker.com/settings/security)
+   - Click "New Access Token"
+   - Name it (e.g., "github-actions")
+   - Copy the token (you won't see it again!)
+
+2. **Add GitHub Secrets**
+   - Go to your GitHub repository
+   - Navigate to Settings → Secrets and variables → Actions
+   - Click "New repository secret"
+   - Add the following secrets:
+     - `DOCKERHUB_USERNAME`: Your DockerHub username
+     - `DOCKERHUB_TOKEN`: The access token you created
+
+3. **Workflow Triggers**
+
+   The workflow automatically runs on:
+   - **Push to main/master**: Builds and pushes with `latest` tag and branch-specific tags
+   - **Git tags** (e.g., `v1.0.0`): Builds and pushes with semantic version tags
+   - **Pull requests**: Builds only (doesn't push) for testing
+
+4. **Image Tags**
+
+   Images are automatically tagged with:
+   - `latest` - Latest build from main/master branch
+   - `main-<git-sha>` - Branch name + commit SHA
+   - `1.0.0`, `1.0`, `1` - Semantic versions (when using git tags)
+
+5. **Create a Release**
+
+   To create a versioned release:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+   This will automatically:
+   - Build the Docker image
+   - Push to DockerHub with tags: `1.0.0`, `1.0`, `1`, and `latest`
+   - Update the deployment manifest
+
+6. **View Build Status**
+
+   Check the "Actions" tab in your GitHub repository to see build progress and logs.
+
+7. **Multi-platform Builds**
+
+   The workflow builds for both:
+   - `linux/amd64` (x86_64)
+   - `linux/arm64` (ARM, including Apple Silicon)
+
+### Manual Docker Build (Alternative)
+
+If you prefer manual builds instead of CI/CD:
+
+```bash
+# Build for your platform
+docker build -t your-dockerhub-username/portfolio-site:latest .
+
+# Push to DockerHub
+docker push your-dockerhub-username/portfolio-site:latest
+```
+
 ## Kubernetes Deployment
 
 ### Prerequisites
@@ -341,32 +417,35 @@ kubectl describe hpa portfolio-site -n portfolio
 
 ```
 portfolio-site/
-├── app/                    # Next.js app directory
-│   ├── layout.tsx         # Root layout with SEO
-│   ├── page.tsx           # Main page
-│   └── globals.css        # Global styles
-├── components/            # React components
-│   ├── Header.tsx         # Starfield header
-│   ├── ImagineText.tsx    # Animated section divider
-│   ├── VideoCarousel.tsx  # Video carousel
-│   ├── WorkTimeline.tsx   # Work history
-│   ├── TechStack.tsx      # Tech stack grid
-│   └── About.tsx          # About section
-├── lib/                   # Utilities
-│   └── analytics.ts       # Analytics tracking
-├── public/                # Static assets
-│   └── assets/           # Images, videos, icons
-├── kubernetes/            # Kubernetes manifests
+├── .github/               # GitHub configurations
+│   └── workflows/        # GitHub Actions workflows
+│       └── docker-build-push.yml  # Docker CI/CD pipeline
+├── app/                   # Next.js app directory
+│   ├── layout.tsx        # Root layout with SEO
+│   ├── page.tsx          # Main page
+│   └── globals.css       # Global styles
+├── components/           # React components
+│   ├── Header.tsx        # Starfield header
+│   ├── ImagineText.tsx   # Animated section divider
+│   ├── VideoCarousel.tsx # Video carousel
+│   ├── WorkTimeline.tsx  # Work history
+│   ├── TechStack.tsx     # Tech stack grid
+│   └── About.tsx         # About section
+├── lib/                  # Utilities
+│   └── analytics.ts      # Analytics tracking
+├── public/               # Static assets
+│   └── assets/          # Images, videos, icons
+├── kubernetes/           # Kubernetes manifests
 │   ├── deployment.yaml
 │   ├── service.yaml
 │   ├── hpa.yaml
 │   ├── configmap.yaml
 │   └── servicemonitor.yaml
-├── Dockerfile            # Multi-stage Docker build
-├── nginx.conf           # Nginx configuration
-├── next.config.js       # Next.js configuration
-├── tailwind.config.ts   # Tailwind configuration
-└── package.json         # Dependencies
+├── Dockerfile           # Multi-stage Docker build
+├── nginx.conf          # Nginx configuration
+├── next.config.js      # Next.js configuration
+├── tailwind.config.ts  # Tailwind configuration
+└── package.json        # Dependencies
 
 ```
 
