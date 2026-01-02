@@ -82,12 +82,10 @@ const technologies: Technology[] = [
 ];
 
 const aboutInfo: AboutInfo = {
-  name: 'Your Name',
-  bio: `I'm a passionate DevOps Engineer and AI enthusiast with a focus on automation, cloud infrastructure, and building intelligent systems.
+  name: 'Justin',
+  bio: `I'm Justin, an Automation Engineer dedicated to redefining how organizations operate through the power of AI-driven workflows. My expertise lies at the intersection of DevOps, Data Engineering, and intelligent automation.
 
-With expertise in Kubernetes, Docker, Terraform, and cloud platforms, I help organizations scale their infrastructure efficiently and securely.
-
-I'm particularly interested in the intersection of AI and automation, exploring how tools like Claude AI and MCP can transform workflows and enhance productivity.`,
+Using n8n, I design agentic workflows that go beyond simple tasks, creating self-governing systems that connect technical infrastructure with core business operations. Whether I'm optimizing a cloud-native environment, engineering data pipelines, or automating complex business logic, my goal remains the same: to replace manual toil with scalable, reliable, and intelligent systems that drive reliability, efficiency, and measurable impact across the entire organization.`,
   photo: '/assets/images/profile-placeholder.svg',
   email: 'your.email@example.com',
   linkedin: 'https://linkedin.com/in/yourprofile',

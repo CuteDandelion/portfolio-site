@@ -3,18 +3,18 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Your Name',
-  description: 'Showcasing my work in AI, automation, DevOps, and cloud technologies. Built with Next.js, TypeScript, and deployed on Kubernetes.',
-  keywords: ['portfolio', 'developer', 'DevOps', 'AI', 'automation', 'Kubernetes', 'cloud', 'n8n', 'MCP', 'Claude'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  title: 'Portfolio | Justin',
+  description: 'Automation Engineer specializing in AI-driven workflows, DevOps, and Data Engineering. Building intelligent systems with n8n, MCP, and cloud technologies.',
+  keywords: ['portfolio', 'automation engineer', 'DevOps', 'AI', 'automation', 'Kubernetes', 'cloud', 'n8n', 'MCP', 'Claude', 'data engineering', 'workflows'],
+  authors: [{ name: 'Justin' }],
+  creator: 'Justin',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://yourportfolio.com',
-    title: 'Portfolio | Your Name',
-    description: 'Showcasing my work in AI, automation, DevOps, and cloud technologies.',
-    siteName: 'Your Name Portfolio',
+    title: 'Portfolio | Justin',
+    description: 'Automation Engineer specializing in AI-driven workflows, DevOps, and Data Engineering.',
+    siteName: 'Justin Portfolio',
     images: [
       {
         url: '/assets/images/og-image.jpg',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio | Your Name',
-    description: 'Showcasing my work in AI, automation, DevOps, and cloud technologies.',
+    title: 'Portfolio | Justin',
+    description: 'Automation Engineer specializing in AI-driven workflows, DevOps, and Data Engineering.',
     images: ['/assets/images/og-image.jpg'],
     creator: '@yourhandle',
   },
