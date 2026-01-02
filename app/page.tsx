@@ -1,11 +1,8 @@
-'use client';
-
-import Header from '@/components/Header';
-import ImagineText from '@/components/ImagineText';
-import VideoCarousel, { VideoItem } from '@/components/VideoCarousel';
-import WorkTimeline, { WorkExperience } from '@/components/WorkTimeline';
-import TechStack, { Technology } from '@/components/TechStack';
-import About, { AboutInfo } from '@/components/About';
+import HomeContent from '@/components/HomeContent';
+import { VideoItem } from '@/components/VideoCarousel';
+import { WorkExperience } from '@/components/WorkTimeline';
+import { Technology } from '@/components/TechStack';
+import { AboutInfo } from '@/components/About';
 
 // Sample data - Replace with your actual data
 const noxAiVideos: VideoItem[] = [
@@ -101,106 +98,13 @@ I'm particularly interested in the intersection of AI and automation, exploring 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Header with Starfield */}
-      <Header />
-
-      {/* Highlights Section - NOX.AI */}
-      <section id="highlights" className="section-container">
-        <ImagineText subtitle="...building AI that thinks in skills, not just prompts" />
-
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-4">
-              NOX.AI
-            </h2>
-            <p className="text-xl text-text-secondary mb-8">
-              <strong>Vision:</strong> A Skill-Based AI + built-in transparency powered by n8n, neo4j, and MCP
-            </p>
-
-            {/* n8n Workflow Image Placeholder */}
-            <div className="card p-8 mb-8 bg-primary-bg-secondary">
-              <div className="aspect-video flex items-center justify-center bg-white rounded-lg border-2 border-dashed border-border">
-                <div className="text-center">
-                  <p className="text-text-secondary text-lg mb-2">n8n Workflow Visualization</p>
-                  <p className="text-sm text-text-secondary">Add your n8n workflow screenshot here</p>
-                  <p className="text-xs text-text-secondary mt-2 font-mono">
-                    /assets/images/n8n-workflow.png
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Video Carousel */}
-            <VideoCarousel videos={noxAiVideos} title="Demonstrations" />
-          </div>
-        </div>
-      </section>
-
-      {/* Claude + MCP Section */}
-      <section id="claude-mcp" className="section-container bg-primary-bg-secondary">
-        <ImagineText subtitle="...automating the future with AI-powered workflows" />
-
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-4">
-              Claude + MCP Automation
-            </h2>
-            <p className="text-xl text-text-secondary mb-8">
-              Leveraging Claude AI and the Model Context Protocol to build intelligent automation workflows
-            </p>
-
-            <VideoCarousel videos={claudeMcpVideos} title="Automation Demos" />
-          </div>
-        </div>
-      </section>
-
-      {/* Work History */}
-      <section id="work-history" className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-4">
-            Work History
-          </h2>
-          <p className="text-lg text-text-secondary">
-            My professional journey and experiences
-          </p>
-        </div>
-
-        <WorkTimeline experiences={workExperiences} />
-      </section>
-
-      {/* Tech Stack */}
-      <section id="tech-stack" className="section-container bg-primary-bg-secondary">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-4">
-            My Tech Stack
-          </h2>
-          <p className="text-lg text-text-secondary">
-            Technologies and tools I work with
-          </p>
-        </div>
-
-        <TechStack technologies={technologies} />
-      </section>
-
-      {/* About Me */}
-      <section id="about" className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-4">
-            About Me
-          </h2>
-        </div>
-
-        <About info={aboutInfo} />
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-starfield-dark text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-sm opacity-80">
-            © {new Date().getFullYear()} Your Name. Built with Next.js, TypeScript, and deployed on Kubernetes.
-          </p>
-        </div>
-      </footer>
+      <HomeContent
+        noxAiVideos={noxAiVideos}
+        claudeMcpVideos={claudeMcpVideos}
+        workExperiences={workExperiences}
+        technologies={technologies}
+        aboutInfo={aboutInfo}
+      />
     </main>
   );
 }
