@@ -59,10 +59,10 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="relative pl-8 pb-12 border-l-2 border-border last:pb-0"
+      className="relative pl-8 pb-12 border-l-2 border-border dark:border-gray-700 last:pb-0"
     >
       {/* Timeline dot */}
-      <div className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent-blue border-4 border-primary-bg" />
+      <div className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent-blue dark:bg-blue-500 border-4 border-primary-bg dark:border-gray-900" />
 
       {/* Content */}
       <div className="card p-6 hover:shadow-lg transition-shadow">
@@ -72,13 +72,13 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <h3 className="text-xl font-semibold text-text-primary mb-1">
+              <h3 className="text-xl font-semibold text-text-primary dark:text-gray-100 mb-1">
                 {experience.position}
               </h3>
-              <p className="text-lg text-accent-blue font-medium mb-2">
+              <p className="text-lg text-accent-blue dark:text-blue-400 font-medium mb-2">
                 {experience.company}
               </p>
-              <p className="text-sm text-text-secondary">
+              <p className="text-sm text-text-secondary dark:text-gray-400">
                 {experience.startDate} - {experience.endDate}
               </p>
             </div>
@@ -89,7 +89,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
               className="flex-shrink-0"
             >
               <svg
-                className="w-6 h-6 text-text-secondary"
+                className="w-6 h-6 text-text-secondary dark:text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -114,14 +114,14 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="pt-4 mt-4 border-t border-border">
-                <p className="text-text-primary mb-4 leading-relaxed">
+              <div className="pt-4 mt-4 border-t border-border dark:border-gray-700">
+                <p className="text-text-primary dark:text-gray-200 mb-4 leading-relaxed">
                   <TypewriterText text={experience.description} isExpanded={isExpanded} />
                 </p>
 
                 {experience.achievements.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-semibold text-text-primary mb-2">Key Achievements:</h4>
+                    <h4 className="font-semibold text-text-primary dark:text-gray-100 mb-2">Key Achievements:</h4>
                     <ul className="space-y-2">
                       {experience.achievements.map((achievement, index) => (
                         <motion.li
@@ -131,8 +131,8 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
                           transition={{ delay: index * 0.1 + 0.3 }}
                           className="flex items-start gap-2"
                         >
-                          <span className="text-accent-blue mt-1">▹</span>
-                          <span className="text-text-secondary">{achievement}</span>
+                          <span className="text-accent-blue dark:text-blue-400 mt-1">▹</span>
+                          <span className="text-text-secondary dark:text-gray-300">{achievement}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -141,7 +141,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
 
                 {experience.technologies.length > 0 && (
                   <div>
-                    <h4 className="font-semibold text-text-primary mb-2">Technologies:</h4>
+                    <h4 className="font-semibold text-text-primary dark:text-gray-100 mb-2">Technologies:</h4>
                     <div className="flex flex-wrap gap-2">
                       {experience.technologies.map((tech, index) => (
                         <motion.span
@@ -149,7 +149,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.05 + 0.4 }}
-                          className="px-3 py-1 bg-primary-bg-secondary text-text-secondary text-sm rounded-full border border-border"
+                          className="px-3 py-1 bg-primary-bg-secondary dark:bg-gray-700 text-text-secondary dark:text-gray-300 text-sm rounded-full border border-border dark:border-gray-600"
                         >
                           {tech}
                         </motion.span>
@@ -170,7 +170,7 @@ export default function WorkTimeline({ experiences }: WorkTimelineProps) {
   if (experiences.length === 0) {
     return (
       <div className="card p-8 text-center">
-        <p className="text-text-secondary">Add your work experiences to showcase your professional journey.</p>
+        <p className="text-text-secondary dark:text-gray-400">Add your work experiences to showcase your professional journey.</p>
       </div>
     );
   }
