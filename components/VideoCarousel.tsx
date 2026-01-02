@@ -36,7 +36,7 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
   if (videos.length === 0) {
     return (
       <div className="card p-8 text-center">
-        <p className="text-text-secondary">No videos available. Add your videos to the assets directory.</p>
+        <p className="text-text-secondary dark:text-gray-400">No videos available. Add your videos to the assets directory.</p>
       </div>
     );
   }
@@ -46,7 +46,7 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
   return (
     <div className="w-full">
       {title && (
-        <h3 className="text-2xl font-heading font-semibold mb-6 text-text-primary">
+        <h3 className="text-2xl font-heading font-semibold mb-6 text-text-primary dark:text-gray-100">
           {title}
         </h3>
       )}
@@ -54,7 +54,7 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
       <div className="relative">
         {/* Main Video Display */}
         <div className="card overflow-hidden mb-6">
-          <div className="relative aspect-video bg-primary-bg-secondary">
+          <div className="relative aspect-video bg-primary-bg-secondary dark:bg-gray-700">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentVideo.id}
@@ -91,7 +91,7 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
               <>
                 <button
                   onClick={prevVideo}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-text-primary p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 text-text-primary dark:text-gray-100 p-3 rounded-full shadow-lg transition-all hover:scale-110"
                   aria-label="Previous video"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
                 </button>
                 <button
                   onClick={nextVideo}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-text-primary p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 text-text-primary dark:text-gray-100 p-3 rounded-full shadow-lg transition-all hover:scale-110"
                   aria-label="Next video"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,10 +113,10 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
 
           {/* Video Info */}
           <div className="p-6">
-            <h4 className="text-xl font-semibold mb-2 text-text-primary">
+            <h4 className="text-xl font-semibold mb-2 text-text-primary dark:text-gray-100">
               {currentVideo.title}
             </h4>
-            <p className="text-text-secondary">
+            <p className="text-text-secondary dark:text-gray-300">
               {currentVideo.description}
             </p>
           </div>
@@ -131,11 +131,11 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
                 onClick={() => goToVideo(index)}
                 className={`flex-shrink-0 relative rounded-lg overflow-hidden transition-all ${
                   index === currentIndex
-                    ? 'ring-4 ring-accent-blue scale-105'
+                    ? 'ring-4 ring-accent-blue dark:ring-blue-500 scale-105'
                     : 'opacity-60 hover:opacity-100'
                 }`}
               >
-                <div className="w-32 h-20 bg-primary-bg-secondary">
+                <div className="w-32 h-20 bg-primary-bg-secondary dark:bg-gray-700">
                   <img
                     src={video.posterUrl}
                     alt={video.title}
@@ -164,8 +164,8 @@ export default function VideoCarousel({ videos, title }: VideoCarouselProps) {
                 onClick={() => goToVideo(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentIndex
-                    ? 'bg-accent-blue w-8'
-                    : 'bg-border hover:bg-text-secondary'
+                    ? 'bg-accent-blue dark:bg-blue-500 w-8'
+                    : 'bg-border dark:bg-gray-600 hover:bg-text-secondary dark:hover:bg-gray-500'
                 }`}
                 aria-label={`Go to video ${index + 1}`}
               />

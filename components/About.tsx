@@ -25,7 +25,7 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ scale: 1.1, y: -2 }}
-      className="flex items-center gap-2 px-4 py-2 bg-primary-bg-secondary hover:bg-accent-blue hover:text-white rounded-lg transition-all duration-200 group"
+      className="flex items-center gap-2 px-4 py-2 bg-primary-bg-secondary dark:bg-gray-700 hover:bg-accent-blue dark:hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200 group text-text-primary dark:text-gray-200"
       aria-label={label}
     >
       <span className="group-hover:scale-110 transition-transform">{icon}</span>
@@ -67,19 +67,19 @@ export default function About({ info }: AboutProps) {
             className="md:col-span-2 space-y-6"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-2">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary dark:text-gray-100 mb-2">
                 Hi, I'm {info.name}
               </h2>
-              <div className="w-20 h-1 bg-accent-blue rounded-full" />
+              <div className="w-20 h-1 bg-accent-blue dark:bg-blue-500 rounded-full" />
             </div>
 
-            <p className="text-lg text-text-secondary leading-relaxed whitespace-pre-line">
+            <p className="text-lg text-text-secondary dark:text-gray-300 leading-relaxed whitespace-pre-line">
               {info.bio}
             </p>
 
             {/* Social Links */}
             <div className="pt-4">
-              <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-text-secondary dark:text-gray-400 uppercase tracking-wider mb-4">
                 Connect with me
               </h3>
 

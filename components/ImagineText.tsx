@@ -57,7 +57,7 @@ export default function ImagineText({ subtitle, delay = 0 }: ImagineTextProps) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: delay + 0.4 }}
-        className="text-xl sm:text-2xl text-text-secondary italic font-light max-w-3xl mx-auto px-4"
+        className="text-xl sm:text-2xl text-text-secondary dark:text-gray-300 italic font-light max-w-3xl mx-auto px-4"
       >
         {subtitle}
       </motion.p>

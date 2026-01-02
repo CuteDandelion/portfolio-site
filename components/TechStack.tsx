@@ -15,13 +15,13 @@ interface TechStackProps {
 }
 
 const categoryColors: Record<string, string> = {
-  'DevOps': 'bg-blue-100 text-blue-800',
-  'Cloud': 'bg-purple-100 text-purple-800',
-  'Languages': 'bg-green-100 text-green-800',
-  'Databases': 'bg-orange-100 text-orange-800',
-  'Tools': 'bg-pink-100 text-pink-800',
-  'Frameworks': 'bg-indigo-100 text-indigo-800',
-  'default': 'bg-gray-100 text-gray-800',
+  'DevOps': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+  'Cloud': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+  'Languages': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+  'Databases': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+  'Tools': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
+  'Frameworks': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
+  'default': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
 };
 
 function TechIcon({ tech, index }: { tech: Technology; index: number }) {
@@ -46,7 +46,7 @@ function TechIcon({ tech, index }: { tech: Technology; index: number }) {
         </div>
 
         {/* Name */}
-        <p className="text-sm font-medium text-text-primary text-center">
+        <p className="text-sm font-medium text-text-primary dark:text-gray-100 text-center">
           {tech.name}
         </p>
 
@@ -60,7 +60,7 @@ function TechIcon({ tech, index }: { tech: Technology; index: number }) {
         </span>
 
         {/* Hover Glow Effect */}
-        <div className="absolute inset-0 rounded-lg bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute inset-0 rounded-lg bg-accent-blue dark:bg-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
       </div>
     </motion.div>
   );
@@ -70,11 +70,11 @@ export default function TechStack({ technologies }: TechStackProps) {
   if (technologies.length === 0) {
     return (
       <div className="card p-8 text-center">
-        <p className="text-text-secondary mb-4">
+        <p className="text-text-secondary dark:text-gray-400 mb-4">
           Add your technology stack icons to showcase your skills.
         </p>
-        <p className="text-sm text-text-secondary">
-          Place SVG icons in <code className="bg-primary-bg-secondary px-2 py-1 rounded">public/assets/icons/tech/</code>
+        <p className="text-sm text-text-secondary dark:text-gray-400">
+          Place SVG icons in <code className="bg-primary-bg-secondary dark:bg-gray-700 px-2 py-1 rounded">public/assets/icons/tech/</code>
         </p>
       </div>
     );
@@ -97,7 +97,7 @@ export default function TechStack({ technologies }: TechStackProps) {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-2xl font-heading font-semibold text-text-primary mb-6"
+            className="text-2xl font-heading font-semibold text-text-primary dark:text-gray-100 mb-6"
           >
             {category}
           </motion.h3>
