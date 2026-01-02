@@ -15,7 +15,7 @@ export default function ImagineText({ subtitle, delay = 0 }: ImagineTextProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay }}
-        className="relative"
+        className="relative inline-block"
       >
         {/* Decorative stars */}
         <motion.span
@@ -23,7 +23,7 @@ export default function ImagineText({ subtitle, delay = 0 }: ImagineTextProps) {
           whileInView={{ opacity: 1, rotate: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: delay + 0.2 }}
-          className="absolute -left-4 sm:-left-8 top-1/2 -translate-y-1/2 text-2xl sm:text-3xl"
+          className="absolute -left-8 top-1/2 -translate-y-1/2 text-3xl"
         >
           ✨
         </motion.span>
@@ -33,13 +33,12 @@ export default function ImagineText({ subtitle, delay = 0 }: ImagineTextProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: delay + 0.1 }}
-          className="imagine-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 px-8 sm:px-12"
+          className="imagine-text text-4xl sm:text-5xl md:text-6xl mb-4"
+          style={{
+            textShadow: '0 0 15px rgba(192, 192, 192, 0.4)',
+          }}
         >
-          <span className="font-light">Why fix it when you can re</span>
-          <span className="gradient-shimmer font-bold inline-block mx-1 sm:mx-2" style={{ fontSize: '1.2em' }}>
-            imagine
-          </span>
-          <span className="font-light">it</span>
+          IMAGINE
         </motion.h2>
 
         <motion.span
@@ -47,7 +46,7 @@ export default function ImagineText({ subtitle, delay = 0 }: ImagineTextProps) {
           whileInView={{ opacity: 1, rotate: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: delay + 0.2 }}
-          className="absolute -right-4 sm:-right-8 top-1/2 -translate-y-1/2 text-2xl sm:text-3xl"
+          className="absolute -right-8 top-1/2 -translate-y-1/2 text-3xl"
         >
           ✨
         </motion.span>
