@@ -84,17 +84,21 @@ export default function Header() {
         className="absolute inset-0 w-full h-full"
       />
 
-      <div className="relative z-10 flex items-center justify-center h-full">
+      <div className="relative z-10 flex items-center justify-center h-full px-4">
         <motion.h1
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="imagine-text font-imagine text-6xl md:text-8xl lg:text-9xl tracking-wider"
+          className="imagine-text font-imagine text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wider text-center"
           style={{
             textShadow: '0 0 20px rgba(192, 192, 192, 0.5), 0 0 40px rgba(192, 192, 192, 0.3)',
           }}
         >
-          IMAGINE
+          <span className="font-light">Why fix it when you can re</span>
+          <span className="gradient-shimmer font-bold inline-block mx-2" style={{ fontSize: '1.2em' }}>
+            imagine
+          </span>
+          <span className="font-light">it</span>
         </motion.h1>
       </div>
     </header>
