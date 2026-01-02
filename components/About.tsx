@@ -67,9 +67,23 @@ export default function About({ info }: AboutProps) {
             className="md:col-span-2 space-y-6"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary dark:text-gray-100 mb-2">
-                Hi, I'm {info.name}
-              </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 mb-2">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary dark:text-gray-100">
+                  Hi, I'm {info.name}
+                </h2>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="mt-3 sm:mt-0 inline-block px-4 py-2 bg-accent-blue/10 dark:bg-blue-600/20 border-2 border-accent-blue dark:border-blue-500 rounded-lg shadow-md"
+                >
+                  <span className="gradient-shimmer font-bold text-sm sm:text-base cursor-default select-none whitespace-nowrap">
+                    Let's Collaborate →
+                  </span>
+                </motion.div>
+              </div>
               <div className="w-20 h-1 bg-accent-blue dark:bg-blue-500 rounded-full" />
             </div>
 
