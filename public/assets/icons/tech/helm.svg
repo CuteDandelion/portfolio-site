@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-<rect width="64" height="64" fill="#0F1689" rx="8"></rect>
-<circle cx="32" cy="32" r="4" fill="#FFF"></circle>
-<rect x="30" y="12" width="4" height="12" fill="#FFF" rx="2"></rect>
-<rect x="30" y="40" width="4" height="12" fill="#FFF" rx="2"></rect>
-<rect x="12" y="30" width="12" height="4" fill="#FFF" rx="2"></rect>
-<rect x="40" y="30" width="12" height="4" fill="#FFF" rx="2"></rect>
-<rect x="18" y="18" width="4" height="10" fill="#FFF" rx="2" transform="rotate(45 20 23)"></rect>
-<rect x="42" y="18" width="4" height="10" fill="#FFF" rx="2" transform="rotate(-45 44 23)"></rect>
-<rect x="18" y="36" width="4" height="10" fill="#FFF" rx="2" transform="rotate(-45 20 41)"></rect>
-<rect x="42" y="36" width="4" height="10" fill="#FFF" rx="2" transform="rotate(45 44 41)"></rect>
-</svg>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="8" fill="#0F1689"/><circle cx="32" cy="32" r="4" fill="#FFF"/><rect x="30" y="12" width="4" height="12" rx="2" fill="#FFF"/><rect x="30" y="40" width="4" height="12" rx="2" fill="#FFF"/><rect x="12" y="30" width="12" height="4" rx="2" fill="#FFF"/><rect x="40" y="30" width="12" height="4" rx="2" fill="#FFF"/></svg>
