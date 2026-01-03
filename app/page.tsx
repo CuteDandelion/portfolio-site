@@ -142,37 +142,37 @@ const technologies: Technology[] = [
   {
     id: 'tech-github-actions',
     name: 'GitHub Actions',
-    iconPath: '/assets/icons/tech/github-actions.svg?v=2',
+    iconPath: '/assets/icons/tech/github-actions.svg?v=3',
     category: 'DevOps',
   },
   {
     id: 'tech-jenkins',
     name: 'Jenkins',
-    iconPath: '/assets/icons/tech/jenkins.svg?v=2',
+    iconPath: '/assets/icons/tech/jenkins.svg?v=3',
     category: 'DevOps',
   },
   {
     id: 'tech-helm',
     name: 'Helm',
-    iconPath: '/assets/icons/tech/helm.svg?v=2',
+    iconPath: '/assets/icons/tech/helm.svg?v=3',
     category: 'DevOps',
   },
   {
     id: 'tech-argocd',
     name: 'Argo CD',
-    iconPath: '/assets/icons/tech/argocd.svg?v=2',
+    iconPath: '/assets/icons/tech/argocd.svg?v=3',
     category: 'DevOps',
   },
   {
     id: 'tech-pulumi',
     name: 'Pulumi',
-    iconPath: '/assets/icons/tech/pulumi.svg?v=2',
+    iconPath: '/assets/icons/tech/pulumi.svg?v=3',
     category: 'DevOps',
   },
   {
     id: 'tech-ansible',
     name: 'Ansible',
-    iconPath: '/assets/icons/tech/ansible.svg?v=2',
+    iconPath: '/assets/icons/tech/ansible.svg?v=3',
     category: 'DevOps',
   },
 
@@ -180,19 +180,19 @@ const technologies: Technology[] = [
   {
     id: 'tech-aws',
     name: 'AWS',
-    iconPath: '/assets/icons/tech/aws.svg?v=2',
+    iconPath: '/assets/icons/tech/aws.svg?v=3',
     category: 'Cloud',
   },
   {
     id: 'tech-azure',
     name: 'Azure',
-    iconPath: '/assets/icons/tech/azure.svg?v=2',
+    iconPath: '/assets/icons/tech/azure.svg?v=3',
     category: 'Cloud',
   },
   {
     id: 'tech-kubernetes',
     name: 'Kubernetes',
-    iconPath: '/assets/icons/tech/kubernetes.svg?v=2',
+    iconPath: '/assets/icons/tech/kubernetes.svg?v=3',
     category: 'Cloud',
   },
 
@@ -200,7 +200,7 @@ const technologies: Technology[] = [
   {
     id: 'tech-python',
     name: 'Python',
-    iconPath: '/assets/icons/tech/python.svg?v=2',
+    iconPath: '/assets/icons/tech/python.svg?v=3',
     category: 'Languages',
   },
   {
@@ -256,13 +256,13 @@ const technologies: Technology[] = [
   {
     id: 'tech-neo4j',
     name: 'Neo4j',
-    iconPath: '/assets/icons/tech/neo4j.svg?v=2',
+    iconPath: '/assets/icons/tech/neo4j.svg?v=3',
     category: 'Databases',
   },
   {
     id: 'tech-redshift',
     name: 'AWS Redshift',
-    iconPath: '/assets/icons/tech/redshift.svg?v=2',
+    iconPath: '/assets/icons/tech/redshift.svg?v=3',
     category: 'Databases',
   },
 

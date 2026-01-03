@@ -1,1 +1,1 @@
-<svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="#8C4FFF"/><path fill="#fff" d="M12 5L7 9l5 4 5-4-5-4zm-5 5v6l5 3 5-3v-6l-5 4-5-4z"/><circle cx="12" cy="12" r="2" fill="#8C4FFF"/></svg>
+<svg fill="#8C4FFF" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Amazon Redshift</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm5-11h-4V7h-2v4H7v2h4v4h2v-4h4v-2z"/></svg>
