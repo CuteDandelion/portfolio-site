@@ -17,6 +17,10 @@ RUN npm ci && \
 # Copy source code
 COPY . .
 
+# Clean cache and old build artifacts before building
+# Ensures fresh build even if .dockerignore doesn't catch everything
+RUN rm -rf .next out node_modules/.cache
+
 # Build the application (creates /app/out directory)
 RUN npm run build
 
