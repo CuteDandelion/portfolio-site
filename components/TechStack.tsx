@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export interface Technology {
   id: string;
@@ -37,14 +36,13 @@ function TechIcon({ tech, index }: { tech: Technology; index: number }) {
     >
       <div className="card p-6 flex flex-col items-center justify-center aspect-square hover:shadow-xl transition-all duration-300">
         {/* Icon */}
-        <div className="relative w-16 h-16 mb-3">
-          <Image
-            src={tech.iconPath}
-            alt={tech.name}
-            fill
-            className="object-contain group-hover:scale-110 transition-transform duration-300"
-          />
-        </div>
+        <img
+          src={tech.iconPath}
+          alt={tech.name}
+          width={64}
+          height={64}
+          className="w-16 h-16 mb-3 object-contain group-hover:scale-110 transition-transform duration-300"
+        />
 
         {/* Name */}
         <p className="text-sm font-medium text-text-primary dark:text-gray-100 text-center">
