@@ -12,11 +12,22 @@ export interface WorkExperience {
   description: string;
   achievements: string[];
   technologies: string[];
+  highlight?: string;
+  category?: 'security' | 'data' | 'devops' | 'development' | 'learning';
 }
 
 interface WorkTimelineProps {
   experiences: WorkExperience[];
 }
+
+// Category color gradients
+const categoryGradients: Record<string, string> = {
+  security: 'bg-gradient-to-r from-red-500 to-orange-500',
+  data: 'bg-gradient-to-r from-blue-500 to-cyan-500',
+  devops: 'bg-gradient-to-r from-purple-500 to-blue-500',
+  development: 'bg-gradient-to-r from-green-500 to-teal-500',
+  learning: 'bg-gradient-to-r from-indigo-500 to-purple-500',
+};
 
 function TypewriterText({ text, isExpanded }: { text: string; isExpanded: boolean }) {
   const [displayedText, setDisplayedText] = useState('');
@@ -65,7 +76,11 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
       <div className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent-blue dark:bg-blue-500 border-4 border-primary-bg dark:border-gray-900" />
 
       {/* Content */}
-      <div className="card p-6 hover:shadow-lg transition-shadow">
+      <motion.div
+        whileHover={{ y: -2 }}
+        transition={{ duration: 0.2 }}
+        className="card p-6 hover:shadow-lg transition-shadow"
+      >
         <button
           onClick={toggleExpand}
           className="w-full text-left focus:outline-none focus:ring-2 focus:ring-accent-blue rounded-lg"
@@ -78,9 +93,27 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
               <p className="text-lg text-accent-blue dark:text-blue-400 font-medium mb-2">
                 {experience.company}
               </p>
-              <p className="text-sm text-text-secondary dark:text-gray-400">
+              <p className="text-sm text-text-secondary dark:text-gray-400 mb-3">
                 {experience.startDate} - {experience.endDate}
               </p>
+
+              {/* Highlight Badge */}
+              {experience.highlight && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                  className={`inline-block px-4 py-2 rounded-lg text-white text-sm font-medium shadow-md ${
+                    experience.category
+                      ? categoryGradients[experience.category]
+                      : 'bg-gradient-to-r from-gray-500 to-gray-600'
+                  }`}
+                >
+                  {experience.highlight}
+                </motion.div>
+              )}
             </div>
 
             <motion.div
@@ -161,7 +194,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
