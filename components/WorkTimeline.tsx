@@ -169,7 +169,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
       >
         <button
           onClick={toggleExpand}
-          className="w-full text-left focus:outline-none focus:ring-2 focus:ring-accent-blue rounded-lg"
+          className="w-full text-left focus:outline-none rounded-lg"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
