@@ -29,86 +29,66 @@ const categoryGradients: Record<string, string> = {
   learning: 'bg-gradient-to-r from-indigo-500 to-purple-500',
 };
 
-// Helper function to categorize achievements and add icons
-function categorizeAchievement(achievement: string): { icon: string; category: string } {
-  const lower = achievement.toLowerCase();
-
-  // Performance/Metrics
-  if (lower.match(/\d+%|increased|improved|accelerated|reduced|faster|optimization/)) {
-    return { icon: '📈', category: 'performance' };
-  }
-
-  // Architecture/Technical Design
-  if (lower.match(/architect|designed|built|implemented|developed|created|engineered/)) {
-    return { icon: '🏗️', category: 'architecture' };
-  }
-
-  // Leadership/Collaboration
-  if (lower.match(/mentor|led|train|partner|collaborated|guided|managed teams/)) {
-    return { icon: '👥', category: 'leadership' };
-  }
-
-  // Security/Compliance
-  if (lower.match(/security|compliance|audit|governance|risk|vulnerabilit/)) {
-    return { icon: '🔒', category: 'security' };
-  }
-
-  // Innovation/POC
-  if (lower.match(/poc|proof of concept|innovative|ml solution|ai|delivered.*solution/)) {
-    return { icon: '💡', category: 'innovation' };
-  }
-
-  // Data/Analytics
-  if (lower.match(/dashboard|analytics|bi |data quality|insights|reporting/)) {
-    return { icon: '📊', category: 'data' };
-  }
-
-  // Integration/Systems
-  if (lower.match(/integrat|validat|enhanced|transform|bridged/)) {
-    return { icon: '🌐', category: 'integration' };
-  }
-
-  // Default
-  return { icon: '▹', category: 'default' };
-}
-
-// Helper function to highlight metrics and technologies
+// Helper function to highlight achievements with metrics and technologies with subtle underlines
 function highlightText(text: string): React.ReactNode[] {
-  // Match percentages, numbers with K/M/+, and common tech keywords
-  const metricPattern = /(\d+(?:\.\d+)?%|\d+(?:\.\d+)?[KM]\+?|\d+M?\+)/g;
-  const techPattern = /(Python|JavaScript|SQL|AWS|Azure|Kubernetes|Docker|Terraform|Apache NiFi|Apache Kafka|Hadoop|HDFS|Hive|Tableau|Power BI|TensorFlow|Neo4j|N8N|MCP|Prometheus|Grafana|Jenkins|GitHub Actions|Argo CD|Helm|Pulumi|C#|ASP\.NET|jQuery|Ajax|HTML|CSS|JIRA|Tenable|Pandas|SAP|Excel|Yarn|Airflow|Spark|Glue|Redshift|Ansible|ISO 27001|BSI IT Grundschutz)/g;
-
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
 
+  // Match achievement phrases with metrics (e.g., "by 50%", "reduced latency by 30%")
+  // Captures context around the percentage/metric for better readability
+  const achievementPattern = /(\w+(?:\s+\w+){0,4}\s+by\s+\d+(?:\.\d+)?%|\w+(?:\s+\w+){0,4}\s+to\s+\d+(?:\.\d+)?%|increased\s+\w+(?:\s+\w+){0,3}\s+\d+(?:\.\d+)?%|reduced\s+\w+(?:\s+\w+){0,3}\s+\d+(?:\.\d+)?%|improved\s+\w+(?:\s+\w+){0,3}\s+\d+(?:\.\d+)?%|accelerated\s+\w+(?:\s+\w+){0,3}\s+\d+(?:\.\d+)?%|\d+(?:\.\d+)?%\s+\w+(?:\s+\w+){0,3}|over\s+\d+[KM]?\+?\s+\w+|\d+[KM]?\+?\s+\w+(?:\s+\w+){0,2})/gi;
+
+  // Match technology names
+  const techPattern = /(Python|JavaScript|TypeScript|SQL|MySQL|PostgreSQL|MongoDB|Redis|AWS|Azure|GCP|Kubernetes|Docker|Terraform|Apache NiFi|Apache Kafka|Apache Airflow|Apache Spark|Hadoop|HDFS|Hive|Tableau|Power BI|Looker|TensorFlow|PyTorch|Neo4j|N8N|n8n|MCP|Prometheus|Grafana|Datadog|Jenkins|GitHub Actions|GitLab CI|Argo CD|Helm|Pulumi|Ansible|C#|ASP\.NET|\.NET|Java|Spring|React|Vue|Angular|Node\.js|jQuery|Ajax|HTML5?|CSS3?|SCSS|Sass|JIRA|Confluence|Tenable|Nessus|Pandas|NumPy|Scikit-learn|SAP|Excel|Yarn|npm|pnpm|Webpack|Vite|Bash|Shell|PowerShell|Glue|Redshift|Athena|Lambda|EC2|S3|ECS|EKS|CloudFormation|ISO 27001|BSI IT Grundschutz|GDPR|SOC 2)/g;
+
   // Find all matches
-  const allMatches: Array<{ index: number; text: string; type: 'metric' | 'tech' }> = [];
+  const allMatches: Array<{ index: number; length: number; text: string; type: 'achievement' | 'tech' }> = [];
 
   let match;
-  while ((match = metricPattern.exec(text)) !== null) {
-    allMatches.push({ index: match.index, text: match[0], type: 'metric' });
+  while ((match = achievementPattern.exec(text)) !== null) {
+    allMatches.push({
+      index: match.index,
+      length: match[0].length,
+      text: match[0],
+      type: 'achievement'
+    });
   }
 
   while ((match = techPattern.exec(text)) !== null) {
-    allMatches.push({ index: match.index, text: match[0], type: 'tech' });
+    allMatches.push({
+      index: match.index,
+      length: match[0].length,
+      text: match[0],
+      type: 'tech'
+    });
   }
 
-  // Sort by index
+  // Sort by index and remove overlaps (prefer achievements over tech)
   allMatches.sort((a, b) => a.index - b.index);
+  const filteredMatches = allMatches.filter((current, i) => {
+    if (i === 0) return true;
+    const previous = allMatches[i - 1];
+    // Check if current overlaps with previous
+    if (current.index < previous.index + previous.length) {
+      // Prefer achievement over tech
+      return current.type === 'achievement';
+    }
+    return true;
+  });
 
-  // Build the result
-  allMatches.forEach((match, i) => {
+  // Build the result with subtle underlines
+  filteredMatches.forEach((match, i) => {
     // Add text before match
     if (match.index > lastIndex) {
       parts.push(text.substring(lastIndex, match.index));
     }
 
-    // Add highlighted match
-    if (match.type === 'metric') {
+    // Add highlighted match with subtle underline
+    if (match.type === 'achievement') {
       parts.push(
         <span
-          key={`metric-${i}`}
-          className="inline-flex items-center px-2 py-0.5 mx-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded font-semibold text-sm"
+          key={`achievement-${i}`}
+          className="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600/40 dark:border-blue-400/40 font-medium"
         >
           {match.text}
         </span>
@@ -117,14 +97,14 @@ function highlightText(text: string): React.ReactNode[] {
       parts.push(
         <span
           key={`tech-${i}`}
-          className="inline-flex items-center px-2 py-0.5 mx-0.5 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded font-medium text-sm"
+          className="text-purple-600 dark:text-purple-400 border-b-2 border-purple-600/40 dark:border-purple-400/40"
         >
           {match.text}
         </span>
       );
     }
 
-    lastIndex = match.index + match.text.length;
+    lastIndex = match.index + match.length;
   });
 
   // Add remaining text
@@ -266,7 +246,7 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
                   </motion.p>
                 )}
 
-                {/* Achievements with icons */}
+                {/* Achievements */}
                 {experience.achievements.length > 0 && (
                   <div className="mb-4">
                     <motion.h4
@@ -278,31 +258,18 @@ function WorkItem({ experience }: { experience: WorkExperience }) {
                       <span className="text-accent-blue dark:text-blue-400">✨</span>
                       Key Achievements:
                     </motion.h4>
-                    <ul className="space-y-3">
-                      {experience.achievements.map((achievement, index) => {
-                        const { icon, category } = categorizeAchievement(achievement);
-                        return (
-                          <motion.li
-                            key={index}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.08 + 0.3 }}
-                            className="flex items-start gap-3 group"
-                          >
-                            <motion.span
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              transition={{ delay: index * 0.08 + 0.35, type: 'spring' }}
-                              className="text-xl mt-0.5 flex-shrink-0"
-                            >
-                              {icon}
-                            </motion.span>
-                            <span className="text-text-secondary dark:text-gray-300 leading-relaxed">
-                              {highlightText(achievement)}
-                            </span>
-                          </motion.li>
-                        );
-                      })}
+                    <ul className="space-y-2.5 list-disc list-inside">
+                      {experience.achievements.map((achievement, index) => (
+                        <motion.li
+                          key={index}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.06 + 0.3 }}
+                          className="text-text-secondary dark:text-gray-300 leading-relaxed"
+                        >
+                          {highlightText(achievement)}
+                        </motion.li>
+                      ))}
                     </ul>
                   </div>
                 )}
