@@ -35,6 +35,8 @@ const workExperiences: WorkExperience[] = [
     startDate: '2023',
     endDate: 'Present',
     description: 'Intensive self-directed learning period in Germany focused on advanced DevOps, cloud architecture, data engineering, and multi-agentic AI development. Building expertise across the full stack of modern infrastructure, automation, and intelligent systems.',
+    highlight: '🚀 Cloud-native DevOps, data engineering & multi-agentic AI systems',
+    category: 'learning',
     achievements: [
       'Infrastructure/Policy as Code: Mastered Terraform, Helm, YAML, and Pulumi for scalable infrastructure automation',
       'Cloud Platforms: Deep expertise in AWS (EKS, EC2, VPC, IAM, Lambda) and Azure (AKS, ACR, VNet, Azure Entra ID)',
@@ -55,6 +57,8 @@ const workExperiences: WorkExperience[] = [
     startDate: 'Jul 2024',
     endDate: 'Apr 2025',
     description: 'Leading governance, risk, and compliance initiatives for a major cloud infrastructure provider in Berlin, Germany. Automated security workflows and compliance frameworks across hybrid cloud environments.',
+    highlight: '🔒 30% efficiency boost through automated compliance & AI-powered dashboards',
+    category: 'security',
     achievements: [
       'Increased operational efficiency and audit readiness by 30% through automated security and compliance workflows',
       'Designed multi-standard compliance automation framework using Python (Pandas), JIRA API, and IONOS Cloud AI Model Hub',
@@ -71,6 +75,8 @@ const workExperiences: WorkExperience[] = [
     startDate: 'May 2020',
     endDate: 'Aug 2023',
     description: 'Led Business Intelligence and System Engineering initiatives for enterprise and telecom clients across Malaysia and international markets. Built scalable data ecosystems and ML-driven analytics solutions.',
+    highlight: '📊 50% faster BI operations with Hadoop ecosystems & ML analytics',
+    category: 'data',
     achievements: [
       'Accelerated Brunei Telco BI operations by 50% and improved data quality by 30% through Python, SQL, and Apache NiFi ETL pipelines',
       'Architected end-to-end data ecosystems across Hadoop, HDFS, Yarn, and Hive supporting millions of daily records',
@@ -89,6 +95,8 @@ const workExperiences: WorkExperience[] = [
     startDate: 'Apr 2018',
     endDate: 'May 2020',
     description: '',
+    highlight: '💡 Foundation in system engineering & business intelligence solutions',
+    category: 'data',
     achievements: [],
     technologies: [],
   },
@@ -99,6 +107,8 @@ const workExperiences: WorkExperience[] = [
     startDate: 'Oct 2016',
     endDate: 'Dec 2016',
     description: 'Developed a construction site fault evidence portal, delivering the full software lifecycle from development to deployment with focus on DevOps practices.',
+    highlight: '🌐 Full-stack ASP.NET development with DevOps automation practices',
+    category: 'development',
     achievements: [
       'Built backend functionality using ASP.NET with C#, implementing MVC architecture for modular, maintainable code',
       'Developed frontend components with HTML, JavaScript, jQuery, Ajax, and CSS for interactive features',
