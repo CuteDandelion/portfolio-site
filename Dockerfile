@@ -39,15 +39,15 @@ RUN mkdir -p /var/cache/nginx /var/log/nginx /var/run && \
     chown -R nginx:nginx /var/cache/nginx /var/log/nginx /var/run /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html /var/cache/nginx /var/log/nginx /var/run
 
-# Health check
+# Health check on port 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost/health || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:8080/health || exit 1
 
 # Switch to non-root user
 USER nginx
 
-# Expose port
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]

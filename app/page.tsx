@@ -358,9 +358,9 @@ const aboutInfo: AboutInfo = {
 Using n8n, I design agentic workflows that go beyond simple tasks, creating self-governing systems that connect technical infrastructure with core business operations. Whether I'm optimizing a cloud-native environment, engineering data pipelines, or automating complex business logic, my goal remains the same: to replace manual toil with scalable, reliable, and intelligent systems that drive reliability, efficiency, and measurable impact across the entire organization.`,
   photo: '/assets/images/profile-placeholder.svg',
   email: 'your.email@example.com',
-  linkedin: 'https://linkedin.com/in/yourprofile',
-  github: 'https://github.com/yourusername',
-  website: 'https://yourwebsite.com',
+  linkedin: 'https://www.linkedin.com/in/justin-chin-b9908a235/',
+  github: 'https://github.com/CuteDandelion/',
+  website: 'https://portfolio.misakirose.com',
 };
 
 export default function Home() {
