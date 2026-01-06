@@ -8,9 +8,9 @@ import { AboutInfo } from '@/components/About';
 const noxAiVideos: VideoItem[] = [
   {
     id: 'nox-1',
-    title: 'NOX.AI Demo - Skill Chaining',
-    description: 'Demonstrates how NOX.AI chains skills together to solve complex problems with built-in transparency.',
-    videoUrl: '/assets/videos/nox-ai/demo-1.mp4',
+    title: 'NOX.AI Demo - Still In Development',
+    description: 'Demonstrates how NOX.AI executes commands chain with skills & analyses semantic knowledge graphs',
+    videoUrl: '/assets/videos/nox-ai/NOX-DEMO.mp4',
     posterUrl: '/assets/videos/nox-ai/demo-1-poster.jpg',
   },
   // Add more videos here
