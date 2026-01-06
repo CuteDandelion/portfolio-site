@@ -42,10 +42,10 @@ export default function HomeContent({
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary dark:text-gray-100 mb-4">
-              NOX.AI
+              INTRODUCING NOX.AI
             </h2>
             <p className="text-xl text-text-secondary dark:text-gray-300 mb-8">
-              <strong>Vision:</strong> A skill-based Multi-Agentic AI with built-in transparency powered by n8n, neo4j, and custom MCPs
+              <strong>Vision:</strong> An experimental skill-based Multi-Agentic AI with built-in transparency powered by n8n, neo4j, and custom MCPs
             </p>
 
             {/* n8n Workflow Image Placeholder */}
