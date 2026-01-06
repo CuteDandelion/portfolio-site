@@ -11,7 +11,7 @@ const noxAiVideos: VideoItem[] = [
     title: 'NOX.AI Demo - Still In Development',
     description: 'Demonstrates how NOX.AI executes commands chain with skills & analyses semantic knowledge graphs',
     videoUrl: '/assets/videos/nox-ai/NOX-DEMO.mp4',
-    posterUrl: '/assets/videos/nox-ai/demo-1-poster.jpg',
+    posterUrl: '/assets/videos/nox-ai/NOX-THUMBNAIL.jpg',
   },
   // Add more videos here
 ];
