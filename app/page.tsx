@@ -19,10 +19,10 @@ const noxAiVideos: VideoItem[] = [
 const claudeMcpVideos: VideoItem[] = [
   {
     id: 'claude-1',
-    title: 'Claude + MCP Workflow Automation',
-    description: 'Showcasing automated workflows powered by Claude AI and the Model Context Protocol.',
-    videoUrl: '/assets/videos/claude-mcp/automation-1.mp4',
-    posterUrl: '/assets/videos/claude-mcp/automation-1-poster.jpg',
+    title: 'SVG/Icons Download Automation',
+    description: 'Showcasing automated workflows powered by Claude & custom private server MCP to automate downloading 35+ SVG/Icon for portfolio site.',
+    videoUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1.mp4',
+    posterUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1-THUMBNAIL.jpg',
   },
   // Add more videos here
 ];
