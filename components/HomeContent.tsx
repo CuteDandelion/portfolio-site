@@ -8,6 +8,7 @@ import VideoCarousel, { VideoItem } from '@/components/VideoCarousel';
 import WorkTimeline, { WorkExperience } from '@/components/WorkTimeline';
 import TechStack, { Technology } from '@/components/TechStack';
 import About, { AboutInfo } from '@/components/About';
+import Image from "next/image";
 
 interface HomeContentProps {
   noxAiVideos: VideoItem[];
@@ -36,7 +37,7 @@ export default function HomeContent({
 
       {/* Highlights Section - NOX.AI */}
       <section id="highlights" className="section-container">
-        <ImagineText subtitle="...building AI that thinks in skills with semantic graphs, not just prompts" />
+        <ImagineText subtitle="...building AI that thinks with semantic graphs and execute with skills, not just prompts" />
 
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -44,21 +45,24 @@ export default function HomeContent({
               NOX.AI
             </h2>
             <p className="text-xl text-text-secondary dark:text-gray-300 mb-8">
-              <strong>Vision:</strong> A Skill-Based AI + built-in transparency powered by n8n, neo4j, and MCP
+              <strong>Vision:</strong> A skill-based Multi-Agentic AI with built-in transparency powered by n8n, neo4j, and custom MCPs
             </p>
 
             {/* n8n Workflow Image Placeholder */}
             <div className="card p-8 mb-8 bg-primary-bg-secondary dark:bg-gray-800/50">
-              <div className="aspect-video flex items-center justify-center bg-white dark:bg-gray-700 rounded-lg border-2 border-dashed border-border dark:border-gray-600">
-                <div className="text-center">
-                  <p className="text-text-secondary dark:text-gray-300 text-lg mb-2">n8n Workflow Visualization</p>
-                  <p className="text-sm text-text-secondary dark:text-gray-400">Add your n8n workflow screenshot here</p>
-                  <p className="text-xs text-text-secondary dark:text-gray-500 mt-2 font-mono">
-                    /assets/images/n8n-workflow.png
-                  </p>
-                </div>
+              <div className="aspect-video relative bg-white dark:bg-gray-700 rounded-lg border border-border dark:border-gray-600 overflow-hidden">
+
+                <Image
+                  src="/assets/images/n8n-workflow.png"
+                  alt="n8n Workflow Visualization"
+                  fill
+                  className="object-contain p-4"
+                  priority
+                />
+
               </div>
             </div>
+
 
             {/* Video Carousel */}
             <VideoCarousel videos={noxAiVideos} title="Demonstrations" />
@@ -73,10 +77,10 @@ export default function HomeContent({
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary dark:text-gray-100 mb-4">
-              Claude + MCP Automation
+              Claude & MCP Automation
             </h2>
             <p className="text-xl text-text-secondary dark:text-gray-300 mb-8">
-              Leveraging Claude AI and the Model Context Protocol to automate workflows
+              Leveraging Claude AI and custom MCPs to automate workflows which include installing, debugging, audit & much more ...
             </p>
 
             <VideoCarousel videos={claudeMcpVideos} title="Automation Demos" />
