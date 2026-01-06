@@ -7,6 +7,10 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
+# Install git and git-lfs for pulling large media files
+RUN apk add --no-cache git git-lfs && \
+    git lfs install
+
 # Copy package files
 COPY package.json package-lock.json* ./
 
@@ -16,6 +20,9 @@ RUN npm ci && \
 
 # Copy source code
 COPY . .
+
+# Pull actual files from Git LFS (videos, large images)
+RUN git lfs pull || true
 
 # Clean cache and old build artifacts before building
 # Ensures fresh build even if .dockerignore doesn't catch everything
