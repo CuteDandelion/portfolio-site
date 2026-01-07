@@ -19,12 +19,18 @@ const noxAiVideos: VideoItem[] = [
 const claudeMcpVideos: VideoItem[] = [
   {
     id: 'claude-1',
+    title: 'N8N Workflow Creation Automation',
+    description: 'Showcasing automated workflows powered by Claude Project & open source n8n MCP to automate creation of n8n workflow.',
+    videoUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-2.mp4',
+    posterUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-2-THUMBNAIL.jpg',
+  },
+  {
+    id: 'claude-2',
     title: 'SVG/Icons Download Automation',
     description: 'Showcasing automated workflows powered by Claude & custom private server MCP to automate downloading 35+ SVG/Icon for portfolio site.',
     videoUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1.mp4',
     posterUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1-THUMBNAIL.jpg',
   },
-  // Add more videos here
 ];
 
 const workExperiences: WorkExperience[] = [

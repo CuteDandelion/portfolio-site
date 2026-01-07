@@ -80,7 +80,7 @@ export default function HomeContent({
               Claude & MCP Automation
             </h2>
             <p className="text-xl text-text-secondary dark:text-gray-300 mb-8">
-              Leveraging Claude AI and custom MCPs to automate workflows which include installing, debugging, audit & much more ...
+              Leveraging Claude AI/CODE and custom/open-source MCPs to automate workflows which include installing, debugging, create & much more ...
             </p>
 
             <VideoCarousel videos={claudeMcpVideos} title="Automation Demos" />
