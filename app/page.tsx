@@ -368,7 +368,7 @@ const aboutInfo: AboutInfo = {
   bio: `I'm Justin, an Automation Engineer dedicated to redefining how organizations operate through the power of AI-driven workflows. My expertise lies at the intersection of DevOps, Data Engineering, and intelligent automation.
 
 Using n8n, I design agentic workflows that go beyond simple tasks, creating self-governing systems that connect technical infrastructure with core business operations. Whether I'm optimizing a cloud-native environment, engineering data pipelines, or automating complex business logic, my goal remains the same: to replace manual toil with scalable, reliable, and intelligent systems that drive reliability, efficiency, and measurable impact across the entire organization.`,
-  photo: '/assets/images/profile-placeholder.svg',
+  photo: '/assets/images/linkedin.jpg',
   email: 'your.email@example.com',
   linkedin: 'https://www.linkedin.com/in/justin-chin-b9908a235/',
   github: 'https://github.com/CuteDandelion/',
