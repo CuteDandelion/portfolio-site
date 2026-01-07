@@ -10,8 +10,10 @@ const noxAiVideos: VideoItem[] = [
     id: 'nox-1',
     title: 'NOX.AI Demo - Still In Development',
     description: 'Demonstrates how NOX.AI executes commands chain with skills & analyses semantic knowledge graphs',
-    videoUrl: '/assets/videos/nox-ai/NOX-DEMO.mp4',
+    videoUrl: '',
     posterUrl: '/assets/videos/nox-ai/NOX-THUMBNAIL.jpg',
+    isYouTube: true,
+    youtubeId: 'CDiNsFKPKB0',
   },
   // Add more videos here
 ];
@@ -21,15 +23,19 @@ const claudeMcpVideos: VideoItem[] = [
     id: 'claude-1',
     title: 'N8N Workflow Creation Automation',
     description: 'Showcasing automated workflows powered by Claude Project & open source n8n MCP to automate creation of n8n workflow.',
-    videoUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-2.mp4',
+    videoUrl: '',
     posterUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-2-THUMBNAIL.jpg',
+    isYouTube: true,
+    youtubeId: 'ioKmTAy3Q40',
   },
   {
     id: 'claude-2',
     title: 'SVG/Icons Download Automation',
     description: 'Showcasing automated workflows powered by Claude & custom private server MCP to automate downloading 35+ SVG/Icon for portfolio site.',
-    videoUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1.mp4',
+    videoUrl: '',
     posterUrl: '/assets/videos/claude-mcp/CLAUDE-DEMO-1-THUMBNAIL.jpg',
+    isYouTube: true,
+    youtubeId: 'LlZcFckGtAc',
   },
 ];
 
